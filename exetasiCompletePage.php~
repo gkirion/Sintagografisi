@@ -1,0 +1,41 @@
+<?php
+    $exetastiko_kentro_id = $_POST["exetastiko_kentro_id"];
+    $parapemptiko_id = $_POST["parapemptiko_id"];
+    $tameio = $_POST["tameio"];
+    $amount = $_POST["amount"];
+    $servername = "localhost";
+    $username = "root";
+    $password = "cskir88";
+    $database = "sintagografisi";
+    
+    // Create connection 
+    $conn = mysqli_connect($servername, $username, $password, $database);
+    mysqli_set_charset($conn,"utf8");
+    // Check connection
+    if (!$conn) { 
+        die("Connection failed: " . mysqli_connect_error());
+    }    
+    //echo "Connected successfully<br>";
+    $sql = "update parapemptiko set exetastiko_kentro_id='$exetastiko_kentro_id' where id=$parapemptiko_id";
+    mysqli_query($conn, $sql);
+    $sql = "insert into bill(date, amount, tameio_id) values(now(), $amount, '$tameio')";
+    mysqli_query($conn, $sql);
+?>
+
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<script type="text/javascript">
+    function saveParapemptikoId() {
+        sessionStorage.setItem("parapemptiko_id", document.getElementById("parapemptiko_id").value);
+    }
+</script>    
+<body>
+<form action="http://localhost/PhpProject1/exetasiPage.php" method="post">
+Κωδικός παραπεμπτικού: <input id="parapemptiko_id" name="parapemptiko_id" />
+<button type="submit" onclick="saveParapemptikoId()">Αναζήτηση</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+    <style>
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:20px;
+    background-color:#eeeeee;
+    height:100%;
+    width:200px;
+    float:left;
+    padding:5px;	      
+}
+#section {
+    width:100%;
+    float:left;
+    /*padding:10px;*/	 	 
+}
+#non-floater 
+{
+    overflow:hidden;    
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;	 	 
+}
+</style>
+    </head>
+    <body>
+        <?php
+            //echo 'hello<br>';
+   
+            $usr = $_POST["username"];
+            $pwd = $_POST["password"];
+            $servername = "localhost";
+            $username = "root";
+            $password = "cskir88";
+            $database = "sintagografisi";
+
+            // Create connection
+            $conn = mysqli_connect($servername, $username, $password, $database);
+			mysqli_set_charset($conn,"utf8");
+            // Check connection
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            //echo "Connected successfully<br>";
+            $sql = "select * from exetastiko_kentro where id='$usr' and password='$pwd'";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                ?>
+                <div id="header">
+                <h1>Hello</h1>
+                </div>
+                <div id="nav">
+                <table>
+                <tr><th colspan="2" align="left">Exetastiko kentro info</th></tr>
+                <?php
+                $row = mysqli_fetch_assoc($result);
+                echo "<tr><td>name:</td><td>" . $row["name"] . "</td></tr>";
+                echo "<tr><td>phone:</td><td>" . $row["phone"] . "</td></tr>";
+                echo "<tr><td>address:</td><td>" . $row["address"] . "</td></tr>";
+                echo "<tr><td>email:</td><td>" . $row["email"] . "</td></tr>";
+                echo "<tr><td>Id:</td><td>" . $row["id"] . "</td></tr>";
+                ?>
+                <tr><td><form action="http://localhost/PhpProject1/exetastikoKentroLogin.htm"><button type="submit">Logout</button></form></td></tr>
+                </table>
+                </div>
+                <div id="non-floater">
+                <div id="section">
+                    <iframe width="100%" height="1000px" src="exetasiSearchPage.htm" name="main_iframe"></iframe>
+                </div>
+                </div>
+                <div id="footer">
+                </div>
+                <?php
+            }
+            else {
+                ?>
+                Incorrect username and/or password<br />
+                <form action="exetastikoKentroLogin.htm">
+                <button type="submit">Back</button>
+                </form>
+                <?php
+            }
+        ?>
+    </body>
+</html>

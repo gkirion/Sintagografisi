@@ -1,0 +1,17 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<script type="text/javascript">
+    function saveParapemptikoId() {
+        sessionStorage.setItem("parapemptiko_id", document.getElementById("parapemptiko_id").value);
+    }
+</script>    
+<body>
+<form action="http://snf-655727.vm.okeanos.grnet.gr/PhpProject1/exetasiPage.php" method="post">
+Κωδικός παραπεμπτικού: <input id="parapemptiko_id" name="parapemptiko_id" />
+<button type="submit" onclick="saveParapemptikoId()">Αναζήτηση</button>
+</form>
+</body>
+</html>

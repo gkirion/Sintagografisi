@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+    <script type="text/javascript">
+        function getData() {
+            document.getElementById("amka").innerHTML = sessionStorage.getItem("amka");
+            document.getElementById("name").innerHTML = sessionStorage.getItem("name");
+            document.getElementById("surname").innerHTML = sessionStorage.getItem("surname");
+            document.getElementById("email").innerHTML = sessionStorage.getItem("email");
+            document.getElementById("reason").innerHTML = sessionStorage.getItem("reason");
+            document.getElementById("tameio").innerHTML = sessionStorage.getItem("tameio");
+            document.getElementById("phone").innerHTML = sessionStorage.getItem("phone");
+            document.getElementById("address").innerHTML = sessionStorage.getItem("address");
+            document.getElementById("days").innerHTML = sessionStorage.getItem("sintagi_days");
+            document.getElementById("sintagi_id").value = "";
+            sessionStorage.setItem("sintagi_id", "");
+        }
+        function getRow(btn) {
+            var id = btn.parentElement.parentElement.id;
+            var data = document.getElementById(id).innerHTML.split("<td>")[1].split("</td>")[0];
+            var table_data = document.getElementById("drug_list").innerHTML;
+            var rows = parseInt(document.getElementById("rows").value);
+            table_data = table_data + "<tr id=\"" + rows + "\"><td><input id=\"drug_id[]\" name=\"drug_id[]\" value=" + data + "></td> \
+            <td><input list=\"qlist\" id =\"quantity[]\" name=\"quantity[]\" /> \
+            <datalist id=\"qlist\"> \
+            <option value=\"5\"> \
+            <option value=\"10\"> \
+            <option value=\"15\"> \
+            <option value=\"20\"> \
+            </datalist></td> \
+            <td><input type=\"text\" id=\"drug_reason[]\" name=\"drug_reason[]\" /></td>\n\
+            <td><button onclick=\"deleteRow(this)\">delete</button></tr>";
+            document.getElementById("drug_list").innerHTML = table_data;
+            rows = rows + 1;
+            document.getElementById("rows").value = rows+"";
+        }
+        function deleteRow(btn) {
+            var id = btn.parentElement.parentElement.id;
+            var table_data = document.getElementById("drug_list").innerHTML;
+            var row_data = document.getElementById(id).innerHTML;
+            table_data = table_data.replace("<tr id=\"" + id + "\">" + row_data + "</tr>", "");
+            document.getElementById("drug_list").innerHTML = table_data;
+            var rows = parseInt(document.getElementById("rows").value);
+            rows = rows - 1;
+            document.getElementById("rows").value = rows+"";
+        }
+    </script>
+</head>
+<body onload="getData()">
+<table>
+<tr><td>
+<table><tr><th><h3>Sintagi</h3></th><th><h3>Visit</h3></th></tr>
+<tr><td>Valid for (days): <output id ="days" name="days"></output></td>
+<td><table>
+<tr><td>Patient Amka: </td><td><output id="amka" name="amka"></output></td></tr>
+<tr><td>Name: </td><td><output id="name" name="name"></output></td></tr>
+<tr><td>Surname: </td><td><output id="surname" name="surname"></output></td></tr>
+<tr><td>Phone: </td><td><output id="phone" name="phone"></output></td></tr>
+<tr><td>Address: </td><td><output id="address" name="address"></output></td></tr>
+<tr><td>e-mail: </td><td><output id="email" name="email"></output></td></tr>
+<tr><td>Tameio: </td><td><output id="tameio" name="tameio"></output></td></tr>
+<tr><td>Reason: </td><td><output id="reason" name="reason"></output></td></tr>
+</table></td>
+</tr>
+</table></td></tr>
+<tr><td>
+<input type="hidden" id="sintagi_id" name="sintagi_id" />
+<table>
+<tr>
+<td><table>
+<tr id="row1"><td>glomp</td><td></td><td><button onclick="getRow(this)">submit</button></td></tr>
+<tr id="row2"><td>glompaki</td><td></td><td><button onclick="getRow(this)">submit</button></td></tr>
+<tr id="row3"><td>glompakis</td><td></td><td><button onclick="getRow(this)">submit</button></td></tr>
+<tr id="row4"><td>kazanakis</td><td></td><td><button onclick="getRow(this)">submit</button></td></tr>
+</table></td>
+<td>
+<form action="http://localhost/PhpProject1/test.php" method="post">
+<table id="drug_list">
+</table>
+</td>
+</tr>
+</table>
+<input type="hidden" id="rows" name="rows" value="0"/>   
+<button type="submit">Complete</button>
+</form>
+</td></tr>
+</body>
+</html>

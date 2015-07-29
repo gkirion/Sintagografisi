@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+<script type="text/javascript">
+    function searchPatient() {
+        var amka = document.getElementById("amka").value;
+        sessionStorage.setItem("amka", amka);
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                try {
+                    var patient = request.responseXML.documentElement.getElementsByTagName("patient");
+
+                    var name = patient[0].getElementsByTagName("name");
+                    document.getElementById("name").value = name[0].firstChild.nodeValue;
+                    sessionStorage.setItem("name", name[0].firstChild.nodeValue);
+
+                    var surname = patient[0].getElementsByTagName("surname");
+                    document.getElementById("surname").value = surname[0].firstChild.nodeValue;
+                    sessionStorage.setItem("surname", surname[0].firstChild.nodeValue);
+
+                    var phone = patient[0].getElementsByTagName("phone");
+                    document.getElementById("phone").value = phone[0].firstChild.nodeValue;
+                    sessionStorage.setItem("phone", phone[0].firstChild.nodeValue);
+
+                    var address = patient[0].getElementsByTagName("address");
+                    document.getElementById("address").value = address[0].firstChild.nodeValue;
+                    sessionStorage.setItem("address", address[0].firstChild.nodeValue);
+
+                    var email = patient[0].getElementsByTagName("email");
+                    document.getElementById("email").value = email[0].firstChild.nodeValue;
+                    sessionStorage.setItem("email", email[0].firstChild.nodeValue);
+
+                    var tameio = patient[0].getElementsByTagName("tameio");
+                    document.getElementById("tameio").value = tameio[0].firstChild.nodeValue;
+                    sessionStorage.setItem("tameio", tameio[0].firstChild.nodeValue);
+                }
+                catch (er) {
+                    //document.getElementById("amka").value = "error";
+                }
+            }
+        }
+        request.open("POST", "http://snf-655727.vm.okeanos.grnet.gr/PhpProject1/searchPatient.php", true);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send("amka=" + amka);
+    }
+
+    function saveReason() {
+        sessionStorage.setItem("reason", document.getElementById("reason").value);
+        document.getElementById("tsay").value = sessionStorage.getItem("username");
+    }
+
+</script>
+<form action="http://snf-655727.vm.okeanos.grnet.gr/PhpProject1/doctorVisitClosePage.php" method="post">
+<table>
+<tr><td>Άμκα ασθενούς: </td><td><input id="amka" name="amka" required /> <button type="button" onclick="searchPatient()">Αναζήτηση</button></td></tr>
+<tr><td>Όνομα: </td><td><input id="name" name="name" /></td></tr>
+<tr><td>Επίθετο: </td><td><input id="surname" name="surname" /></td></tr>
+<tr><td>Τηλέφωνο: </td><td><input id="phone" name="phone" /></td></tr>
+<tr><td>Διεύθυνση: </td><td><input id="address" name="address" /></td></tr>
+<tr><td>Email: </td><td><input id="email" name="email" /></td></tr>
+<tr><td>Ταμείο: </td><td><input id="tameio" name="tameio" /></td></tr>
+<tr><td>Λόγος επίσκεψης: </td><td><input id="reason" name="reason" required /></td></tr>
+</table>
+<input hidden="true" id="tsay" name="tsay" />
+<button type="submit" onclick="saveReason()">Άνοιγμα επίσκεψης</button> <button type="reset">Επαναφορά</button>
+</form>
+<div id="response"></div>
+</body>
+</html>

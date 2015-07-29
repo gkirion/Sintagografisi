@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<script type="text/javascript">
+    function saveSintagiId() {
+        sessionStorage.setItem("sintagi_id", document.getElementById("sintagi_id").value);
+    }
+</script>    
+<body>
+<form action="http://snf-655727.vm.okeanos.grnet.gr/PhpProject1/pharmacySintagiPage.php" method="post">
+Sintagi id: <input id="sintagi_id" name="sintagi_id" />
+<button type="submit" onclick="saveSintagiId()">Search</button>
+</form>
+</body>
+</html>

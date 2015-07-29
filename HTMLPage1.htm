@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title> My Test Page </title>
+    <link rel=Stylesheet type="text/css" href=StyleSheet1.css />
+</head>
+<body>
+<script>
+    function okfunc() {
+       // var button = document.getElementById("hello_button");
+        //var x = document.forms["hello_form"][2].value;
+        //  button.innerHTML = x;
+        var elem = document.getElementById("myrow");
+        elem.style = "color:Aqua;";
+        
+    }
+</script>
+<p> Some HTML elements </p>
+<p>
+Αυτή είναι η πρώτη μου σελίδα μετά από πολύ καιρό, είμαι ενθουσιασμένος!
+</p>
+<button id = "hello_button" onclick= "okfunc()"> Click Me! </button>
+<form name = "hello_form"  method="post" action="HTMLPage2.htm"
+enctype="multipart/form-data">
+  <!--
+  action="http://snf-655727.vm.okeanos.grnet.gr:81/PhpProject1/index.php"
+    <input type = date name="date">
+    <br /><input type=checkbox name="checkbox" checked="checked" />
+    <br /><input type=color name="color" />
+    <br /><input type=file name="file" />
+    <br /><input type=number name="number" />
+    <br /><input type=time name="time" />
+    <br /><input type=email name="email" />
+    <br /><input type=password name="password" />
+    <br /><textarea name="textarea"></textarea>
+    <br /><select name="select">
+            <option> Σταφύλια </option>
+            <option> Φράουλες </option>
+            <option selected="selected"> Καρπούζι </option>
+        </select>
+        !-->
+        <br /><input type=file name="file" />
+    <br /><input type=submit />
+</form>
+<h2> Βασικά </h2>
+<ul>
+<li> Μου αρέσουν: 
+    <ol>
+        <li> Τα γλυκά </li>
+        <li> Η Φωτεινή </li>
+    </ol>
+</li>
+<li> Και Θέλω: 
+    <ol>
+        <li> Ηρεμία </li>
+        <li> Δημιουργικότητα </li>
+    </ol>
+</li>
+</ul>
+<img src=fotini.jpg alt="o mpempis" height="200pt" width="200pt"/>
+<h2> Θείος Μήτσος </h2>
+<table>
+    <tr id="header">
+        <th> Πελάτης </th>
+        <th> Είδος </th>
+        <th> Ποσότητα </th>
+    </tr>
+    <tr>
+        <td> Καζανάκης </td>
+        <td> Πράσο </td>
+        <td> 187 </td>
+    </tr>
+    <tr id = "myrow" onmouseover="okfunc()">
+        <td> Φωτάκης </td>
+        <td> Κοζάκικο </td>
+        <td> 45 </td>
+    </tr>
+</table>
+<a href="https://www.google.gr/" title="google"> google.gr </a>
+</body>
+</html>

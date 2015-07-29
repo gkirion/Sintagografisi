@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+<script type="text/javascript">
+    function copy() {
+        //document.getElementById("cipher").innerHTML = document.getElementById("plain").value;
+        var plaintext = new String(document.getElementById("plain").value);
+        var ciphertext = [];
+        for (i = 0; i < plaintext.length; i++)
+            ciphertext[i] = String.fromCharCode(plaintext.charCodeAt(i) + 3);
+        document.getElementById("cipher").innerHTML = ciphertext.join("");
+    }
+
+    function getDate() {
+        var date = new Date();
+        document.getElementById("text").value = date.toLocaleString();
+    }
+</script>
+<form action="HTMLPage1.htm">
+<textarea id="plain" name="plaintext" cols="30" rows="10">
+</textarea><p></p>
+<input id ="text" type="text"/><p></p>
+<button type=submit>Submit</button> 
+<button type=button onclick="copy()">Copy</button>
+<button type=button onclick="getDate()">Get Date</button>
+<button type=reset>Reset</button><p></p>
+<textarea id="cipher" name="ciphertext" cols="30" rows="10">
+</textarea>
+</form>
+</body>
+</html>

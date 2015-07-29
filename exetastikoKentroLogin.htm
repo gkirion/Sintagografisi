@@ -1,0 +1,22 @@
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Exetastiko Page</title>
+    <script type="text/javascript">
+        function saveExetastikoKentroId() {
+            sessionStorage.setItem("exetastiko_kentro_id", document.getElementById("username").value);
+        }
+    </script>
+</head>
+<body>
+<form action="http://snf-655727.vm.okeanos.grnet.gr/PhpProject1/exetastikoKentroIndex.php" method="post">
+<table>
+<tr><td>Όνομα χρήστη: </td><td><input type="text" id="username" name="username"/></td></tr>
+<tr><td>Κωδικός: </td><td><input type="password" name="password"/></td></tr>
+</table>
+<input type="submit" name="login" value="Είσοδος" onclick="saveExetastikoKentroId()" />
+<input type="reset" name="reset" value="Επαναφορά" />
+</form>
+
+</body>
+</html>

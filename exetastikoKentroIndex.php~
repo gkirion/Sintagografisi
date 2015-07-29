@@ -5,16 +5,18 @@
         <title></title>
     <style>
 #header {
-    background-color:black;
+    background-color:white;
     color:white;
-    text-align:center;
+    text-align:right;
     padding:5px;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
 }
 #nav {
     line-height:20px;
     background-color:#eeeeee;
     height:100%;
-    width:200px;
+    width:250px;
     float:left;
     padding:5px;	      
 }
@@ -60,20 +62,27 @@
             if (mysqli_num_rows($result) > 0) {
                 ?>
                 <div id="header">
-                <h1>Hello</h1>
+                <!-- <h1>Hello</h1> -->
+				<table bgcolor="white" align="center" width="100%">
+				<tr>
+					<td> <img src="background.jpg" width="100%" height="100px"  /> </td>
+					<td><img align="middle" src="logo.jpg" width="100%" height="100px" /> </td>
+					<td><img align="right" src="decor.jpg" width="100%" height="100px" /> </td>
+				</tr>
+				</table>
                 </div>
                 <div id="nav">
                 <table>
-                <tr><th colspan="2" align="left">Exetastiko kentro info</th></tr>
+                <tr><th colspan="2" align="left">Στοιχεία εξεταστικού κέντρου</th></tr>
                 <?php
                 $row = mysqli_fetch_assoc($result);
-                echo "<tr><td>name:</td><td>" . $row["name"] . "</td></tr>";
-                echo "<tr><td>phone:</td><td>" . $row["phone"] . "</td></tr>";
-                echo "<tr><td>address:</td><td>" . $row["address"] . "</td></tr>";
-                echo "<tr><td>email:</td><td>" . $row["email"] . "</td></tr>";
-                echo "<tr><td>Id:</td><td>" . $row["id"] . "</td></tr>";
+                echo "<tr><td>Όνομα:</td><td>" . $row["name"] . "</td></tr>";
+                echo "<tr><td>Τηλέφωνο:</td><td>" . $row["phone"] . "</td></tr>";
+                echo "<tr><td>Διεύθυνση:</td><td>" . $row["address"] . "</td></tr>";
+                echo "<tr><td>Email:</td><td>" . $row["email"] . "</td></tr>";
+                echo "<tr><td>Αναγνωριστικό:</td><td>" . $row["id"] . "</td></tr>";
                 ?>
-                <tr><td><form action="http://localhost/PhpProject1/exetastikoKentroLogin.htm"><button type="submit">Logout</button></form></td></tr>
+                <tr><td><form action="http://snf-655727.vm.okeanos.grnet.gr/PhpProject1/exetastikoKentroLogin.htm"><button type="submit">Έξοδος</button></form></td></tr>
                 </table>
                 </div>
                 <div id="non-floater">
@@ -87,9 +96,9 @@
             }
             else {
                 ?>
-                Incorrect username and/or password<br />
+                Λανθασμένο όνομα χρήστη και/η κωδικός<br />
                 <form action="exetastikoKentroLogin.htm">
-                <button type="submit">Back</button>
+                <button type="submit">Πίσω</button>
                 </form>
                 <?php
             }

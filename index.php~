@@ -16,7 +16,7 @@
     line-height:20px;
     background-color:#eeeeee;
     height:100%;
-    width:200px;
+    width:250px;
     float:left;
     padding:5px;	      
 }
@@ -85,7 +85,7 @@
                 echo "<tr><td>Τσαυ:</td><td id='tsay'>" . $row["tsay"] . "</td></tr>";
                 echo "<tr><td>Άμκα:</td><td>" . $row["amka"] . "</td></tr>";
                 ?>
-                <tr><td><form action="http://localhost/PhpProject1/doctorLogin.htm"><button type="submit">Έξοδος</button></form></td></tr>
+                <tr><td><form action="http://snf-655727.vm.okeanos.grnet.gr/PhpProject1/doctorLogin.htm"><button type="submit">Έξοδος</button></form></td></tr>
                 </table>
                 </div>
                 <div id="non-floater">

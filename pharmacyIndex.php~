@@ -16,7 +16,7 @@
     line-height:20px;
     background-color:#eeeeee;
     height:100%;
-    width:200px;
+    width:250px;
     float:left;
     padding:5px;	      
 }
@@ -82,7 +82,7 @@
                 echo "<tr><td>Email:</td><td>" . $row["email"] . "</td></tr>";
                 echo "<tr><td>Αναγνωριστικό:</td><td>" . $row["id"] . "</td></tr>";
                 ?>
-                <tr><td><form action="http://localhost/PhpProject1/pharmacyLogin.htm"><button type="submit">Έξοδος</button></form></td></tr>
+                <tr><td><form action="http://snf-655727.vm.okeanos.grnet.gr/PhpProject1/pharmacyLogin.htm"><button type="submit">Έξοδος</button></form></td></tr>
                 </table>
                 </div>
                 <div id="non-floater">

@@ -66,9 +66,9 @@
                 <!--<h1>Medical I.S</h1>-->
 				<table bgcolor="white" align="center" width="100%">
 				<tr>
-					<td> <img src="background.jpg" height="100px"  /> </td>
-					<td><img align="middle" src="logo.jpg" height="100px" /> </td>
-					<td><img align="right" src="decor.jpg" height="100px" /> </td>
+					<td> <img src="background.jpg" width="100%" height="100px"  /> </td>
+					<td><img align="middle" src="logo.jpg" width="100%" height="100px" /> </td>
+					<td><img align="right" src="decor.jpg" width="100%" height="100px" /> </td>
 				</tr>
 				</table>
                 </div>
